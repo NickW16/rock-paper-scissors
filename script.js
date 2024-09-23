@@ -18,6 +18,26 @@ function getComputerChoice (choice) {
 console.log(getComputerChoice());
 
 /* This section takes the human choice */
+let humanChoice = prompt("Rock, paper or scissors?");
+
 function getHumanChoice (choice) {
+    if (humanChoice === "Rock" || "rock") {
+        humanChoice = "Rock";
+    }
+    if (humanChoice === "Paper" || "paper") {
+        humanChoice = "Paper";
+    }
+    if (humanChoice === "Scissors" || "scissors") {
+        humanChoice = "Scissors";
+    }
+    return humanChoice;
+}
+console.log(getHumanChoice());
+
+/* This section keeps track of player's score */
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound (play) {
     
 }
