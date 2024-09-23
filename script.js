@@ -17,8 +17,8 @@ function getComputerChoice (choice) {
 }
 
 /* This section takes the human choice */
-let humanChoice = prompt("Rock, paper or scissors?");
 function getHumanChoice (choice) {
+    let humanChoice = prompt("Rock, paper or scissors?");
     if (humanChoice.toLowerCase() === "rock") {
         humanChoice = "Rock";
     }
@@ -64,16 +64,24 @@ function playGame (game) {
             humanScore += 1;
         }
         else (console.log("It's a Draw! Play again"))
-    
+        console.log("-=-=-=-=-=-=-=-=-=-=-=-=")
     }
 
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
+/* This section plays the game 5 times and tells who's the winner! */
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
 
-    playRound(humanSelection, computerSelection);
-
-    console.log("The computer score is", computerScore);
-    console.log("The player score is:", humanScore);
+    console.log("You've played 5 times! The result is:", humanScore," X ", computerScore);
+    if (humanScore > computerScore) {
+        console.log("You won!");
+    }
+    else if (humanScore < computerScore) {
+        console.log("You lost!")
+    }
+    else (console.log("It's a Draw!"));
 }
 
 playGame();
