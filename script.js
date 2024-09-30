@@ -16,22 +16,6 @@ function getComputerChoice (choice) {
     return CPUresult;
 }
 
-/* This section takes the human choice */
-function getHumanChoice (choice) {
-    let humanChoice = prompt("Rock, paper or scissors?");
-    if (humanChoice.toLowerCase() === "rock") {
-        humanChoice = "Rock";
-    }
-    if (humanChoice.toLowerCase() === "paper") {
-        humanChoice = "Paper";
-    }
-    if (humanChoice.toLowerCase() === "scissors") {
-        humanChoice = "Scissors";
-    }
-    console.log("You chose:", humanChoice);
-    return humanChoice;
-}
-
 function playGame (game) {
 /*This section keeps track of player score */
     let humanScore = 0;
@@ -67,12 +51,19 @@ function playGame (game) {
         console.log("-=-=-=-=-=-=-=-=-=-=-=-=")
     }
 
-/* This section plays the game 5 times and tells who's the winner! */
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
+
+let buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    let humanChoice = button.textContent;
+    console.log(humanChoice);
+    const playerChoice = document.querySelector("#playerChoice");
+    playerChoice.textContent = humanChoice;
+    playRound(humanChoice, getComputerChoice());
+  })
+});
+
 
     console.log("You've played 5 times! The result is:", humanScore," X ", computerScore);
     if (humanScore > computerScore) {
