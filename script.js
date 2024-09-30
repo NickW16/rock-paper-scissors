@@ -20,6 +20,7 @@ function playGame (game) {
 /*This section keeps track of player score */
     let humanScore = 0;
     let computerScore = 0;
+    let playCount = 0;
 
     /* This section plays a round */
     function playRound (humanChoice, computerChoice) {
@@ -95,26 +96,35 @@ function playGame (game) {
         }
     }
 
+    /* This section plays the game with buttons */
+    let buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (playCount < 5) {
+                let humanChoice = button.textContent;
+                console.log(humanChoice);
+                playRound(humanChoice, getComputerChoice());
+                playCount += 1;
+                roundNumber.textContent = "Round: " + playCount;
 
-let buttons = document.querySelectorAll("button");
-/* This section plays the game with buttons */
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    let humanChoice = button.textContent;
-    console.log(humanChoice);
-    playRound(humanChoice, getComputerChoice());
-  })
-});
-
-
-    console.log("You've played 5 times! The result is:", humanScore," X ", computerScore);
-    if (humanScore > computerScore) {
-        console.log("You won!");
-    }
-    else if (humanScore < computerScore) {
-        console.log("You lost!")
-    }
-    else (console.log("It's a Draw!"));
-}
+                let gameScore = document.querySelector("#gameScore");
+                if (playCount === 5) {   
+                    if (humanScore > computerScore) {
+                        console.log("You won!");
+                        gameScore.textContent = "You won!\n Score was: " + humanScore + " X " + computerScore;
+                    }
+                    else if (humanScore < computerScore) {
+                        console.log("You lost!");
+                        gameScore.textContent = "You lost!\n Score was: " + humanScore + " X " + computerScore;
+                    }
+                    else if (humanScore === computerScore){
+                        (console.log("It's a Draw!"));
+                        gameScore.textContent = "It's a Draw!\n Score was: " + humanScore + " X " + computerScore;
+                    }
+                }
+            }
+        }) 
+    });
+} ;
 
 playGame();
