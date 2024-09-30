@@ -25,41 +25,83 @@ function playGame (game) {
     function playRound (humanChoice, computerChoice) {
         if (humanChoice === "Rock" && computerChoice === "Paper") {
             console.log("You lose! Paper beats Rock");
+            const playerSelection = document.querySelector("#playerSelection");
+            playerSelection.textContent = "You chose: " + humanChoice;
+            const computerSelection = document.querySelector("#computerSelection");
+            computerSelection.textContent = "The computer chose: " + computerChoice;
+            const result = document.querySelector("#result");
+            result.textContent = "You lose! Paper beats Rock";
             computerScore += 1;
         }
         else if (humanChoice === "Paper" && computerChoice === "Scissors") {
             console.log("You lose! Scissors beats Paper");
+            const playerSelection = document.querySelector("#playerSelection");
+            playerSelection.textContent = "You chose: " + humanChoice;
+            const computerSelection = document.querySelector("#computerSelection");
+            computerSelection.textContent = "The computer chose: " + computerChoice;
+            const result = document.querySelector("#result");
+            result.textContent = "You lose! Scissors beats Paper";
             computerScore += 1;
         }
         else if (humanChoice === "Scissors" && computerChoice === "Rock") {
             console.log("You lose! Rock beats Scissors");
+            const playerSelection = document.querySelector("#playerSelection");
+            playerSelection.textContent = "You chose: " + humanChoice;
+            const computerSelection = document.querySelector("#computerSelection");
+            computerSelection.textContent = "The computer chose: " + computerChoice;
+            const result = document.querySelector("#result");
+            result.textContent = "You lose! Rock beats Scissors";
             computerScore += 1;
         }
         else if (humanChoice === "Scissors" && computerChoice === "Paper") {
-            console.log("You Win! Scissors beats Paper")
+            console.log("You Win! Scissors beats Paper");
+            const playerSelection = document.querySelector("#playerSelection");
+            playerSelection.textContent = "You chose: " + humanChoice;
+            const computerSelection = document.querySelector("#computerSelection");
+            computerSelection.textContent = "The computer chose: " + computerChoice;
+            const result = document.querySelector("#result");
+            result.textContent = "You Win! Scissors beats Paper";
             humanScore += 1;
         }
         else if (humanChoice === "Paper" && computerChoice === "Rock") {
             console.log("You Win! Paper beats Rock");
+            const playerSelection = document.querySelector("#playerSelection");
+            playerSelection.textContent = "You chose: " + humanChoice;
+            const computerSelection = document.querySelector("#computerSelection");
+            computerSelection.textContent = "The computer chose: " + computerChoice;
+            const result = document.querySelector("#result");
+            result.textContent = "You Win! Paper beats Rock";
             humanScore += 1;
         }
         else if (humanChoice === "Rock" && computerChoice === "Scissors") {
             console.log("You Win! Rock beats Scissors");
+            const playerSelection = document.querySelector("#playerSelection");
+            playerSelection.textContent = "You chose: " + humanChoice;
+            const computerSelection = document.querySelector("#computerSelection");
+            computerSelection.textContent = "The computer chose: " + computerChoice;
+            const result = document.querySelector("#result");
+            result.textContent = "You Win! Rock beats Scissors";
             humanScore += 1;
         }
-        else (console.log("It's a Draw! Play again"))
+        else if (humanChoice === computerChoice) {
+        console.log("It's a Draw!")
+        const playerSelection = document.querySelector("#playerSelection");
+        playerSelection.textContent = "You chose: " + humanChoice;
+        const computerSelection = document.querySelector("#computerSelection");
+        computerSelection.textContent = "The computer chose: " + computerChoice;
+        const result = document.querySelector("#result");
+        result.textContent = "It's a Draw!";
         console.log("-=-=-=-=-=-=-=-=-=-=-=-=")
+        }
     }
 
 
 let buttons = document.querySelectorAll("button");
-
+/* This section plays the game with buttons */
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     let humanChoice = button.textContent;
     console.log(humanChoice);
-    const playerChoice = document.querySelector("#playerChoice");
-    playerChoice.textContent = humanChoice;
     playRound(humanChoice, getComputerChoice());
   })
 });
