@@ -22,6 +22,23 @@ function playGame (game) {
     let computerScore = 0;
     let playCount = 0;
 
+    function resetGame( ) {
+        humanScore = 0;
+        computerScore = 0;
+        playCount = 0;
+        roundNumber.textContent = ""
+        document.querySelector("#gameScore").textContent = "";
+        document.querySelector("#playerSelection").textContent = "";
+        document.querySelector("#computerSelection").textContent = "";
+        document.querySelector("#result").textContent = "";
+    }
+    if (playCount === 0) {
+        roundNumber.textContent = "Round: 1";
+    } else {
+        roundNumber.textContent = "Round: " + (playCount + 1);
+    }
+
+
     /* This section plays a round */
     function playRound (humanChoice, computerChoice) {
         if (humanChoice === "Rock" && computerChoice === "Paper") {
@@ -103,6 +120,11 @@ function playGame (game) {
             if (playCount < 5) {
                 let humanChoice = button.textContent;
                 console.log(humanChoice);
+                if (playCount === 0) {
+                    roundNumber.textContent = "Round: 1";
+                } else {
+                    roundNumber.textContent = "Round: "+ (playCount +1);
+                }
                 playRound(humanChoice, getComputerChoice());
                 playCount += 1;
                 roundNumber.textContent = "Round: " + playCount;
@@ -121,10 +143,15 @@ function playGame (game) {
                         (console.log("It's a Draw!"));
                         gameScore.textContent = "It's a Draw!\n Score was: " + humanScore + " X " + computerScore;
                     }
+                    document.querySelector("#playAgainButton").style.display = "block";
                 }
             }
         }) 
     });
+    document.querySelector("#playAgainButton").addEventListener("click", () => {
+        resetGame();
+        document.querySelector("#playAgainButton").style.display = "none";
+    })
 } ;
 
 playGame();
